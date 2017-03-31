@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>登录</title>
+		<script src="js/mui.min.js"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<!--自定义样式-->
+		<script src="js/jquery-3.1.1.js"></script>  <!--jquery-->
+		<link rel="stylesheet" href="css/iconfont.css" /><!--字体图标-->
+		<link rel="stylesheet" href="css/media.css" />	<!--媒体查询-->			
+		<link rel="stylesheet" href="css/publicCSS.css"/><!--公用样式	-->		
+		<link rel="stylesheet" href="css/login.register.css" /><!--css样式-->		
+	</head>
+	<body>		
+		<div class="star-login">
+			<form action="">
+				<!--头像-->
+				<div class="log-portrait">
+					<img src="img/mz-logo.png" />
+				</div>
+				<!--内容-->
+				<div class="log-content">
+					<!--账户-->
+					<div class="account-log">
+						<label class="iconfont icon-yonghu"></label>
+						<div class="log-row mui-pull-right">
+							<input type="text" class="" placeholder="用户名/邮箱" id="phone">
+						</div>
+					</div>
+
+					<!--密码-->
+					<div class="account-log">
+						<label class="iconfont icon-mima"></label>
+						<div class=" log-row mui-pull-right">
+							<input type="password" class="" placeholder="密码" id="passw">
+						</div>
+					</div>
+
+					<!--登录按钮-->
+					<div class="log-submint">
+						<input type="button" name="" id="" value="登录"/>
+						<div class="link-area">
+							<a href="" class="forget">忘记密码？</a>
+							<a href="" class="mui-pull-right sign">注册账号</a>
+						</div>
+					</div>
+				</div>				
+									                                                       
+			</form>
+			  <!--外部登录链接-->  
+			     <div style="width: 75%;margin: auto;margin-top: 2.2rem;">
+                      	<!--分割线-->
+                     <div class="log-link log-write"> 				     	
+             	          <ul>
+             	        	 <li class="write wire"></li>
+             	        	 <li class="text wire">OR</li>
+             	        	 <li class="write wire"></li>
+             	          </ul>            	    
+                      </div>  
+                     <!-- QQ 微信 微博-->
+				       <div class="log-link"> 				     	
+             	          <ul>
+             	        	 <li><a href="" class="iconfont icon-QQ"></a></li>
+             	        	 <li><a href="" class="iconfont icon-weixin"></a></li>
+             	        	 <li><a href="" class="iconfont icon-weibo"></a></li>
+             	          </ul>            	    
+                     </div>    			
+		      </div>			                 
+		</div>
+		<script src="js/ajax.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+			mui(".link-area").on("tap",".forget",function(){
+				 mui.openWindow({
+				 	url:'login/fgPassWord.html',
+				 	id:'fgPassWord'
+				 })
+			})
+			mui(".link-area").on("tap",".sign",function(){
+				 mui.openWindow({
+				 	url:'login/enroll.html',
+				 	id:'enroll'
+				 })
+			})
+			mui(".log-submint").on("tap","input",function(){
+				if($('#phone').val()==''){
+					mui.toast('请输入手机号'); 
+					return false;
+				}else if($('#passw').val()==''){
+					mui.toast('请输入密码'); 
+					return false;
+				}else{
+				ajaxMain('/Home/Love/Sign_in',{love_user_phone:$('#phone').val(),love_user_password:$('#passw').val()},
+				function(data){
+					if(data.return=='1000'){
+						ajaxMain('/Home/Love/judge',{love_user_id:data.userarr[0].love_user_id},
+						function(datas){
+							if(datas.return!='1006'){
+								 mui.openWindow({
+									url:'homepage/model.html',
+						 			id:'homepage',
+								    extras:{
+										love_user_id:data.userarr[0].love_user_id
+									}
+								})
+							}else{
+								mui.openWindow({
+									url:'login/starChoice.html',
+						 			id:'starChoice',
+								    extras:{
+										love_user_id:data.userarr[0].love_user_id
+									}
+								})
+							}
+						})
+                        mui.plusReady(function(){
+							plus.storage.setItem('user_id',data.userarr[0].love_user_id)
+						})			                        	                 
+                    }else{
+	                   plus.nativeUI.toast('密码错误或无该用户', {verticalAlign: 'center'}); 
+	            	   return false ;
+		            } 
+    			})
+				}
+			})
+		</script>
+	</body>          
+</html>

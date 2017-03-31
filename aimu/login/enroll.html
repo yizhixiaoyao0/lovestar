@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>注册</title>
+		<script src="../js/mui.min.js"></script>	
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<!--自定义样式-->
+		<link rel="stylesheet" href="../css/iconfont.css" /><!--字体图标-->
+		<link rel="stylesheet" href="../css/media.css" />	<!--媒体查询-->			
+		<link rel="stylesheet" href="../css/publicCSS.css"/><!--公用样式	-->	
+		<link rel="stylesheet" href="../css/login.register.css"/><!--css样式-->
+	</head>
+	<body>		
+		<div class="star-login">
+			  <!--头部-->				
+				<header class="mui-bar mui-bar mui-bar-transparent enroll-bar">
+					<a href="" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+				</header>
+			<form action="">				
+				<!--内容-->
+				<div class="log-content enroll-content">
+					<!--手机号码-->
+					<div class="account-log account-enroll">
+						<label class="iconfont icon-yonghu"></label>
+						<div class="log-row mui-pull-right">
+							<input type="text" class="" placeholder="请输入手机号码" id="phone">
+						</div>
+					</div>
+					<!--验证码-->
+					<div class="account-log account-enroll">
+						<label class="iconfont icon-yanzheng"></label>
+						<div class="log-row mui-pull-right verify">
+							<input type="text" class="" placeholder="请输入验证码" id="u_code">
+							<a href="#" class="mui-pull-right" id="get_code">获取验证码</a>
+						</div>
+					</div>
+                    
+					<!--设置密码-->
+					<div class="account-log account-enroll">
+						<label class="iconfont icon-mima"></label>
+						<div class=" log-row mui-pull-right">
+							<input type="password" class="" placeholder="6-12位数字加字母组合密码" id="passw">							
+						</div>
+					</div>
+					<!--注册按钮-->
+					<div class="log-submint">
+						<input type="button" name="" id="" value="注册" />						
+					</div>
+				</div>													                                                       
+			</form>			
+		</div>
+		<script src="../js/jquery-3.1.1.js"></script>
+		<script src="../js/yanzhen.js"></script>
+		<script type="text/javascript">
+		mui.init();
+		mui('.verify').on('tap','#get_code',function(){
+			num();
+		})
+		mui('.log-submint').on('tap','input',function(){
+			senmobile('/Home/Love/register',{'love_user_phone':$('#phone').val(),'love_user_password':$('#passw').val()},
+			function(data){
+				if(data.return== '1003'){			                    	
+	                plus.nativeUI.toast('用户已存在！', {verticalAlign: 'center'}); 
+	                return false; 
+	           }else{
+	           	    plus.nativeUI.toast('注册成功！', {verticalAlign: 'center'}); 
+					mui.openWindow({
+						url:'../index.html',  
+						id:'login',   
+					})
+			    } 
+			})
+		})
+
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,108 @@
+	
+ .star-pic ,
+ .portrait li img{
+		font-family: "宋体";
+		width: 100%;
+		height: 100%;
+	}
+	/*  头部*/	
+	.star-select {
+		background: #313131;
+	}	
+	.star-select a {
+		color: #FFFFFF;
+	}
+	/*内容*/	
+	.star-pt {
+		height: 4.6rem;
+		position: relative;
+	}
+	/*文本内容*/	
+	.star-text {
+		width: 100%;
+		height: 1.3rem;
+		position: absolute;
+		top: 3.25rem;
+		background: #FFFFFF;
+	}
+/*	关注*/
+	 .attention {	 	
+	 	 margin-top: 0.22rem;
+	     margin-right: 0.22rem;
+	}	
+	.star-text .mui-pull-right .mui-btn {
+		margin-top: 0.25rem;		
+		border: 1px solid #8f6ef7;
+		border-radius: 0.3rem;
+		display: block;
+		font-size: 0.28rem;
+		line-height:0.4rem;
+	}
+	
+	.star-text .mui-pull-right .heart {		
+		font-size: 0.6rem;
+		color: #8f6ef7;
+		border: 0;
+		display: none;	    		
+	}	
+	.star-content {
+		padding-left: 0.2rem;
+		padding-top: 0.1rem;
+		background: #FFFFFF;
+	}
+	/*名字	*/
+	.colour {
+		color: #313131;
+	}	
+	/*粉丝数*/
+	.name {
+		font-size: 0.4rem;
+	}	
+	.star-content a {
+		font-size: 0.3rem;
+		text-decoration: none;
+	}
+	.star-content .mui-row a span {
+		margin-left: 0.1rem;
+	}
+	
+	 .portrait li {
+		width: 0.5rem;
+		height: 0.5rem;
+		float: left;
+		margin-left: 0.22rem;
+		margin-top: 0.07rem;
+	}	
+	.star-content .portrait li:first-child {
+		margin-left: 0;
+	}
+		
+	/*模态框*/	
+	.star-hint {		
+		height: 1.5rem;
+		padding-left: 25%;
+		margin: auto;
+		position: fixed;
+		top: 5%;		
+	}	
+	.star-hint ul {		
+		width: 60%;		
+	}	
+	.star-hint ul li {
+		padding: 0.35rem 0.2rem;		
+		font-size: 0.3rem;
+		color: #866eb1;		
+	}
+	/*按钮*/
+	.btn{
+		width: 100%;
+		height: 50px;
+		background-color: #313131;
+		color: #ddd;
+		font-size:20px;
+		position: fixed;
+		bottom: 0;
+		z-index: 999;
+	}
+.mui-pull-bottom-pocket{display: none;}
+.mui-scroll-wrapper{padding-bottom:60px;}

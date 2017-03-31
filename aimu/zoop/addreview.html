@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>发布动态</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/media.css" rel="stylesheet"/>
+		<link href="../css/iconfont.css" rel="stylesheet"/>
+		<style type="text/css">
+			*{margin: 0;padding: 0;font-family:simsun}
+			.head{background-color:#313131 ;}
+			.head a,.title{color: #fff;}
+			.conplete{line-height:40px;font-size:14px;}
+			.text{min-height:4.0rem;border: none;}
+			.form{position: relative;}
+			.camera{position: absolute;bottom:0.8rem;left:0.3rem;width:1.5rem;height:1.5rem;border: 1px solid #CCC;padding-top: 0.2rem;}
+			.camera span{width:1.5rem;display: block;color: #ccc;text-align: center;}
+			.mui-icon-camera{font-size: 0.78rem;line-height:0.70rem!important;}
+			.camera .camtext{font-size: 0.25rem}
+			.img{width:1.5rem;height:1.5rem;position:absolute;top:0rem;z-index: 99;display: none;}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav head">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left back"></a>
+			<h1 class="mui-title title">发布动态</h1>
+			<a class="mui-pull-right conplete">完成</a>
+		</header>
+		<div class="mui-content">
+			<form id="myForm" class="form" method="post" enctype="multipart/form-data" >
+				<textarea class="text" placeholder="输入你想说的" name="love_dynamic_text"></textarea>
+				<input type="text" value="" name="love_user_id" style="display: none;"/>
+				<input type="text" value="" name="love_star_id" style="display: none;"/>
+				<a class="camera"><img src="" class="img" id="show"/><span class="mui-icon mui-icon-camera"></span><span class="camtext">照片</span></a>
+				<input type="file" accept="image/*" name="photo" style="display: none;"/>
+			</form>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/jquery-3.1.1.js"></script>
+		<script src="../js/ajax.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			$('input[type="file"]').change(function(){
+				var file=this.files[0];
+				var reader=new FileReader();
+				reader.onload = function(evt){
+				$('#show').show().attr('src',evt.target.result);
+				}
+				reader.readAsDataURL(file);
+			});
+			mui.plusReady(function(){
+				var id=plus.storage.getItem('user_id');
+				var star=plus.webview.currentWebview().love_star_id;
+				$('input[name="love_user_id"]')[0].value=id;
+				$('input[name="love_star_id"]')[0].value=star;
+				mui('.form').on('tap','.camera',function(){
+					$('input[type="file"]').trigger();
+				})
+				$('.form')[0].action='http://123.206.43.228/Love/index.php/Home/Love/Publish_dynamic'
+				mui('body').on('tap','conplete',function(){
+					if($('.text')[0].innerHTML!=''){
+						$('.form').submit();
+					}else{
+						alert('发送不能为空');
+					}
+					
+				})
+			})
+		</script>
+	</body>
+
+</html>

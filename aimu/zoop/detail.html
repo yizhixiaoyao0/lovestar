@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>明星咨询详情页</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/iconfont.css" rel="stylesheet" />
+		<link href="../css/media.css" rel="stylesheet"/>
+		<link href="../css/share.css" rel="stylesheet"/>
+		<style type="text/css">
+			img,span{display: block;}
+			.head{background-color: #313131;}
+			.head a,.head h1{color: #fff;}
+		</style>
+	</head>
+	<body>
+		<header id="header" class="mui-bar mui-bar-nav head" >
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left back"></a>
+			<h1 class="mui-title title">郭碧婷azsadsad</h1>
+			<a class="mui-icon mui-pull-right iconfont icon-zhuanfa" href="#popover"></a>
+		</header>
+		<div class="mui-content">			
+		</div>
+		<div id="popover" class="mui-popover menu" >
+				<p>分享</p>
+				<div>
+				  <ul class="">
+				    <li class="">
+				    	<a href="#" onclick="shareMessage(0)">
+				    		<img src="../img/qq.png" />
+				    		<span>QQ好友</span>
+				    	</a>
+				    </li>
+				    <li class=""><a href="#" onclick="shareMessage(1)">
+				    	<img src="../img/weibo.png" />
+				    		<span>微博</span>
+				    </a></li>
+				    <li class=""><a href="#" onclick="shareMessage(2)" >
+				    	<img src="../img/friend.png" />
+				    		<span>朋友圈</span>
+				    </a></li>
+				    <li class=""><a href="#" onclick="shareMessage(2)">
+				    	<img src="../img/weixin.png"/>
+				    		<span>微信好友</span>
+				    </a></li>							    
+				  </ul>
+				</div>
+				<div class="div2">
+					<ul class="">
+					    <li class="">
+					    	<a href="#" onclick="shareMessage(0)">
+					    		<img src="../img/kongjian1.png" />
+					    		<span>QQ空间</span>
+					    	</a>
+					    </li>
+					    <li class=""><a href="#">
+					    	<img src="../img/link.png" />
+					    		<span>复制链接</span>
+					    </a></li>
+				   </ul>
+				</div>
+			  <button class="btn">取消</button>  
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/jquery-3.1.1.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			$(".btn").on("click",function(){
+				$("#popover,.mui-backdrop").toggle();
+			});
+		</script>
+	</body>
+
+</html>

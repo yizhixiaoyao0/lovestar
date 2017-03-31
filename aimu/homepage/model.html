@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>底部导航</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/media.css" rel="stylesheet"/>
+		<link href="../css/iconfont.css" rel="stylesheet"/>
+		<style type="text/css">
+			nav{background-color: #313131 !important;}
+			.mui-active{color:#a58bf9 !important;}
+		</style>
+	</head>
+	<body>
+		  <nav class="mui-bar mui-bar-tab" id="nav">
+		    <a class="mui-tab-item " id="a1" href="#">
+		        <span class="mui-icon iconfont icon-iconfontshouye1"></span>
+		        <span class="mui-tab-label">首页</span>
+		    </a>
+		    <a class="mui-tab-item " id="a2" href="#">
+		        <span class="mui-icon iconfont icon-liuyan"></span>
+		        <span class="mui-tab-label">社交</span>
+		    </a>
+		    <a class="mui-tab-item " id="a3" href="#">
+		        <span class="mui-icon iconfont icon-icon101246"></span>
+		        <span class="mui-tab-label">部落</span>
+		    </a>
+		    <a class="mui-tab-item " id="a4" href="#">
+		        <span class="mui-icon iconfont icon-wo"></span>
+		        <span class="mui-tab-label">我的</span>
+		    </a>
+		</nav>
+		<script src="../js/jquery-3.1.1.js"></script>
+		<script src="../js/mui.min.js"></script>
+		<script> 
+//		mui.plusReady(function(){ 
+	            mui.init({  
+	                    subpages:[//先加载首页  
+	                        {  
+	                          url:'shouye1.html',  
+	                          id:'a1',  
+	                          styles:{  
+	                             top:'0px',  
+	                             bottom:'50px'  
+	                          }  
+	                        }                            
+	                    ]                      
+	            })
+	        mui.plusReady(function(){ 
+	                mui.preload({
+					 	url:'../contact/friend.html',  
+	                    id:'a2',  
+	                    styles:{  
+	                        top:'0px',  
+	                        bottom:'50px'  
+	                    }  
+					});
+					mui.preload({
+					 	url:'../zoop/buluo.html',  
+	                    id:'a3',  
+	                    styles:{  
+	                        top:'0px',  
+	                        bottom:'50px'  
+	                    }  
+					});
+					mui.preload({
+					 	url:'../myself/personal.html',  
+	                    id:'a4',  
+	                    styles:{  
+	                       top:'0px',  
+	                       bottom:'50px'  
+	                    }
+					});
+	                var winAll=plus.webview.all();//获取所有窗体  
+	                console.log(JSON.stringify(winAll))
+	                var a1,a2,a3,a4
+	                $("#nav").on("tap","#a1",function(){//点击触发  
+	                    a1=plus.webview.getWebviewById("a1");  
+	                    console.log(JSON.stringify(a1))   
+	                    a1.show(); 
+	                    a2.hide();
+	                    a3.hide();
+	                    a4.hide();
+	                })  
+	                $("#nav").on("tap","#a2",function(){//点击触发  
+						a2=plus.webview.getWebviewById("a2"); 
+	                    a2.show();
+	                })  
+	                $("#nav").on("tap","#a3",function(){//点击触发  
+	                    a3=plus.webview.getWebviewById("a3");  
+	                    a3.show(); 
+	                })
+	                $("#nav").on("tap","#a4",function(){//点击触发  
+	                    a4=plus.webview.getWebviewById("a4");                     
+	                    a4.show();
+	                }) 
+            	})  
+        </script>   
+	</body>
+</html>

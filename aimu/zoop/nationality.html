@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>部落粉丝圈</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/media.css" rel="stylesheet" />
+		<style type="text/css">
+		    *{margin: 0;padding: 0;}
+		    ul li{list-style-type: none;}
+		    img{display: block;border: none;}
+			.head a ,.title{color: #fff;}
+			.banner{width: 100%;height:4.5rem;position: relative;}
+			.banner .banpic{height: 100%;width: 100%;}
+			.starhead{position:absolute;bottom:-0.85rem;border-radius:50%;width:1.8rem;height:1.8rem;left:0.5rem ;}
+			.starhead img{width: 100%;height: 100%;border-radius: 50%;}
+			/**/
+			.man_show{padding:1.2rem 0.3rem 0 ;}
+			.showtitle{width:30%;background-color:#999;height: 0.45rem;font-size: 0.28rem;color:#e5e5e5;
+				text-align: center;
+				padding-top: 0.08rem;
+			}
+			hr{height: 1px !important;background-color: #999;}
+			/*成员显示*/
+			.list{width: 100%;height: 2.2rem;}
+			.list li{width: 20%;float: left;height: 1.3rem;padding: 0.2rem 0.3rem 0 0;border-radius: 50%;display: block;}
+			.list li img{width:95%;height:90%;border-radius: 50%;}
+			/*部落公告*/
+			.notice{padding-top: 0.4rem;}
+			.notice_text{padding:0.25rem 0.4rem;font-size: 0.25rem;color: #777;width: 100%;}
+			/*申请加入*/
+			.btn{width:90%;color:#a58bf9 ;height:0.8rem;margin-left:5%;font-size: 0.35rem;position: fixed;bottom: 0.3rem;}
+		</style>
+	</head>
+	<body>		
+		<div id="app">			
+		<!--头部-->
+			<header class="mui-bar mui-bar-transparent head" style="background-color:rgba(247,247,247,0)">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left back"></a>
+				<h1 class="mui-title title">{{a.love_tribe_name}}</h1>
+			</header>
+			<div class="mui-content">
+				<div class="banner">
+					<img :src="a.love_star_img" class="banpic"/>
+					<a href="#" class="starhead"><img :src="a.love_tribe_img"/></a>
+				</div>
+				<!--部落成员-->
+				<div class="man_show">
+					<div class="showtitle">部落成员</div>
+					<hr />
+					<ul class="list">
+						<li v-for="(person,index) in aa" v-if="index<=7"><img :src="person.love_user_img"/></li>					
+					</ul>
+				</div>
+				<!--部落公告-->
+				<div class="man_show notice">
+					<div class="showtitle">部落公告</div>
+					<hr />
+					<div class="notice_text">{{a.love_tribe_notice}}</div>
+				</div>
+				<!--申请加入-->
+				<button class="mui-btn mui-btn-outlined btn" :tribe_id="a.tribe_id">申请加入</button>
+			</div>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/jquery-3.1.1.js"></script>
+		<script src="../js/ajax.js"></script>
+		<script src="../js/vue.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			mui.plusReady(function(){
+				var star=plus.webview.currentWebview().love_star_id;
+				var id=plus.storage.getItem('user_id');
+				ajaxMain('/Home/Love/enter_Tribe',{love_star_id:star,love_user_id:id},
+				function(data){
+					var vue=new Vue({
+						el:'#app',
+						data:data
+					})
+					if(data.a.return==1006){
+						$('.btn').show()
+					}else{
+						$('.btn').hide()
+					}
+				})
+				mui('body').on('tap','.btn',function(){					
+					mui.openWindow({
+						url:'apply.html',
+						id:'apply',
+						extras:{
+							tribe_id:$(this).attr('tribe_id'),
+							love_star_id:star
+						}
+					})
+				})				
+			})
+			
+		</script>
+	</body>
+
+</html>

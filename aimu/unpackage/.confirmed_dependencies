@@ -1,0 +1,373 @@
+{
+	"index.html": {
+		"resources": [
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"js/jquery-3.1.1.js",
+			"css/publicCSS.css",
+			"img/login.png",
+			"css/iconfont.css",
+			"js/ajax.js",
+			"css/login.register.css",
+			"fonts/iconfont.woff",
+			"css/media.css",
+			"img/mz-logo.png"
+		],
+		"refer": [
+			"login/fgPassWord.html",
+			"login/enroll.html",
+			"login/starChoice.html",
+			"homepage/model.html"
+		]
+	},
+	"login/fgPassWord.html": {
+		"resources": [
+			"js/yanzhen.js",
+			"fonts/mui.ttf"
+		]
+	},
+	"login/enroll.html": {
+		"resources": [
+			"js/jquery-3.1.1.js",
+			"css/publicCSS.css",
+			"js/yanzhen.js",
+			"js/mui.min.js",
+			"img/login.png",
+			"fonts/mui.ttf",
+			"css/iconfont.css",
+			"css/mui.min.css",
+			"css/login.register.css",
+			"fonts/iconfont.woff",
+			"css/media.css"
+		],
+		"refer": [
+			"index.html"
+		]
+	},
+	"login/starChoice.html": {
+		"resources": [
+			"css/starChoice.css",
+			"fonts/mui.ttf",
+			"img/zx1.png",
+			"js/jquery-3.1.1.js",
+			"css/publicCSS.css",
+			"js/mui.min.js",
+			"css/iconfont.css",
+			"css/mui.min.css",
+			"js/ajax.js",
+			"fonts/iconfont.woff",
+			"css/media.css"
+		],
+		"refer": [
+			"homepage/model.html"
+		]
+	},
+	"homepage/model.html": {
+		"resources": [
+			"homepage/shouye1.html",
+			"js/jquery-3.1.1.js",
+			"js/mui.min.js",
+			"css/iconfont.css",
+			"css/mui.min.css",
+			"fonts/iconfont.woff",
+			"css/media.css"
+		],
+		"refer": [
+			"homepage/shouye1.html",
+			"myself/personal.html",
+			"zoop/buluo.html",
+			"contact/friend.html"
+		]
+	},
+	"homepage/shouye1.html": {
+		"resources": [
+			"img/shouye.png",
+			"js/jquery-3.1.1.js",
+			"fonts/mui.ttf",
+			"js/mui.min.js",
+			"css/iconfont.css",
+			"css/mui.min.css",
+			"js/ajax.js",
+			"fonts/iconfont.woff",
+			"css/media.css",
+			"img/blbg.jpg"
+		],
+		"refer": [
+			"homepage/shouye2.html",
+			"homepage/shouye-search.html"
+		]
+	},
+	"myself/personal.html": {
+		"resources": [
+			"css/personal.css",
+			"img/geren1.png",
+			"js/jquery-3.1.1.js",
+			"css/publicCSS.css",
+			"js/mui.min.js",
+			"css/iconfont.css",
+			"css/mui.min.css",
+			"css/media.css",
+			"js/ajax.js",
+			"fonts/mui.ttf"
+		],
+		"refer": [
+			"myself/personalSet.html",
+			"myself/aboutMe.html",
+			"myself/feedback.html",
+			"myself/care.html",
+			"myself/collect.html"
+		]
+	},
+	"zoop/buluo.html": {
+		"resources": [
+			"img/mx2.png",
+			"img/mx1.png",
+			"js/mui.pullToRefresh.js",
+			"js/jquery-3.1.1.js",
+			"js/mui.min.js",
+			"js/mui.pullToRefresh.material.js",
+			"css/mui.min.css",
+			"js/ajax.js",
+			"css/media.css"
+		],
+		"refer": [
+			"zoop/personal.html",
+			"zoop/detail.html"
+		]
+	},
+	"contact/friend.html": {
+		"resources": [
+			"img/headpic.jpg",
+			"js/vue.js",
+			"js/jquery-3.1.1.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/iconfont.css",
+			"css/mui.min.css",
+			"js/ajax.js",
+			"fonts/iconfont.woff",
+			"css/media.css"
+		],
+		"refer": [
+			"contact/add.html"
+		]
+	},
+	"homepage/shouye2.html": {
+		"resources": [
+			"img/weibo.png",
+			"img/qq.png",
+			"img/friend.png",
+			"img/weixin.png",
+			"img/link.png",
+			"js/jquery-3.1.1.js",
+			"fonts/mui.ttf",
+			"fonts/iconfont.woff",
+			"css/media.css",
+			"js/mui.min.js",
+			"css/iconfont.css",
+			"css/mui.min.css",
+			"js/ajax.js"
+		],
+		"refer": [
+			"homepage/shouye3.html"
+		]
+	},
+	"homepage/shouye3.html": {
+		"resources": [
+			"js/time.js",
+			"js/jquery-3.1.1.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/iconfont.css",
+			"css/mui.min.css",
+			"js/ajax.js",
+			"fonts/iconfont.woff",
+			"css/media.css"
+		]
+	},
+	"homepage/shouye-search.html": {
+		"resources": [
+			"js/jquery-3.1.1.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/iconfont.css",
+			"css/mui.min.css",
+			"js/ajax.js",
+			"fonts/iconfont.woff",
+			"css/media.css"
+		],
+		"refer": [
+			"zoop/buluo.html",
+			"zoop/personal.html"
+		]
+	},
+	"zoop/personal.html": {
+		"resources": [
+			"fonts/mui.ttf",
+			"js/jquery-3.1.1.js",
+			"js/mui.min.js",
+			"css/iconfont.css",
+			"css/mui.min.css",
+			"js/ajax.js",
+			"fonts/iconfont.woff",
+			"css/media.css",
+			"js/vue.js"
+		],
+		"refer": [
+			"zoop/nationality.html",
+			"zoop/dynamic.html"
+		]
+	},
+	"zoop/nationality.html": {
+		"resources": [
+			"img/blbg.jpg",
+			"js/jquery-3.1.1.js",
+			"js/vue.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/ajax.js",
+			"css/media.css"
+		],
+		"refer": [
+			"zoop/apply.html"
+		]
+	},
+	"zoop/apply.html": {
+		"resources": [
+			"img/headpic.jpg",
+			"js/jquery-3.1.1.js",
+			"js/vue.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/ajax.js",
+			"css/media.css"
+		]
+	},
+	"contact/add.html": {
+		"resources": [
+			"js/echarts.min.js",
+			"js/jquery-3.1.1.js",
+			"img/headpic.jpg",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/iconfont.css",
+			"css/mui.min.css",
+			"js/ajax.js",
+			"fonts/iconfont.woff",
+			"css/media.css"
+		]
+	},
+	"myself/personalSet.html": {
+		"resources": [
+			"fonts/mui.ttf",
+			"js/jquery-3.1.1.js",
+			"css/publicCSS.css",
+			"js/mui.min.js",
+			"css/personal.css",
+			"css/iconfont.css",
+			"css/mui.min.css",
+			"js/ajax.js",
+			"css/media.css"
+		],
+		"refer": [
+			"myself/amendName.html"
+		]
+	},
+	"myself/aboutMe.html": {
+		"resources": [
+			"img/geren2.png",
+			"css/publicCSS.css",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/personal.css",
+			"css/iconfont.css",
+			"css/mui.min.css",
+			"fonts/iconfont.woff",
+			"css/media.css"
+		]
+	},
+	"myself/feedback.html": {
+		"resources": [
+			"css/publicCSS.css",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/personal.css",
+			"css/iconfont.css",
+			"css/mui.min.css",
+			"css/media.css"
+		]
+	},
+	"myself/care.html": {
+		"resources": [
+			"js/jquery-3.1.1.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/iconfont.css",
+			"css/mui.min.css",
+			"fonts/iconfont.woff",
+			"css/media.css",
+			"js/ajax.js"
+		]
+	},
+	"myself/collect.html": {
+		"resources": [
+			"js/jquery-3.1.1.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/iconfont.css",
+			"css/mui.min.css",
+			"js/ajax.js",
+			"fonts/iconfont.woff",
+			"css/media.css"
+		]
+	},
+	"zoop/detail.html": {
+		"resources": [
+			"js/jquery-3.1.1.js",
+			"img/qq.png",
+			"img/weibo.png",
+			"fonts/mui.ttf",
+			"img/kongjian1.png",
+			"img/weixin.png",
+			"fonts/iconfont.woff",
+			"css/media.css",
+			"css/share.css",
+			"js/mui.min.js",
+			"css/iconfont.css",
+			"css/mui.min.css",
+			"img/friend.png",
+			"img/link.png"
+		]
+	},
+	"myself/amendName.html": {
+		"resources": [
+			"js/jquery-3.1.1.js",
+			"css/publicCSS.css",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/personal.css",
+			"css/iconfont.css",
+			"css/mui.min.css",
+			"css/media.css"
+		],
+		"refer": [
+			"myself/personalSet.html"
+		]
+	},
+	"zoop/dynamic.html": {
+		"resources": [
+			"js/jquery-3.1.1.js",
+			"img/headpic.jpg",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/iconfont.css",
+			"css/mui.min.css",
+			"js/ajax.js",
+			"img/blbg.jpg",
+			"fonts/iconfont.woff",
+			"css/media.css"
+		]
+	}
+}

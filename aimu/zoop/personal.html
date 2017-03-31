@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>明星个人介绍页面</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/iconfont.css" rel="stylesheet"/>
+		<link href="../css/media.css" rel="stylesheet"/>
+		<style type="text/css">
+		*{font-family: simsun;}
+			img{display: block;}
+			p{margin-bottom: 0; -webkit-margin-before:0;-webkit-margin-after:0;}
+			ul li{list-style-type: none;}
+			/*头部*/
+			.head{background-color: #313131;}
+			.head a,.head h1{color: #fff;}
+			/*文字介绍部分*/
+			.mui-content{padding-bottom: 0.8rem;}
+			.banner{width: 100%;padding: 0.3rem;}
+			.str_img{width: 36%;height:3.0rem;float: left;}
+			.ban_right{padding:0.4rem 0 0 0.3rem;width: 64%;overflow: hidden;}
+			.ban_right span{color: #777;}
+			.ban_right p{min-height:0.35rem;}
+			.name{font-size:0.35rem;font-weight: bold;color: #5a5a5a;margin-bottom:0.15rem;min-height: 0.4rem;}
+			.country,.nation{font-size: 0.32rem;}
+			.nation{margin-left: 0.2rem;}
+			.data{font-size: 0.25rem;}
+			.weight{margin-left: 0.2rem;}
+			/*分类介绍*/
+			.fan{padding-top:0.5rem;clear:both;}
+			.fan .con_slid a{float: left;width: 33.3%;}
+			.item span{display: block;line-height: 0.45rem;color: #5a5a5a;border-right: 1px solid #ccc !important;text-align: center;}
+			.text{font-weight: bold;}
+			.special span{border: none !important;}
+			/*电影*/
+			.collect{padding: 0.5rem 0.3rem 0.3rem;clear:both ;color: #5a5a5a;font-weight: bold;font-size: 0.33rem;}
+			.roll{width:100%;height: 2.5rem !important;}
+			.roll a{margin: 0 0.3rem;float: left;}
+			.roll a span{color: #777;font-size: 0.25rem;}
+			.roll img{width:1.8rem;height: 2.1rem;}
+			.mui-scroll{width:15.0rem!important;}
+			/*电视剧*/
+			.collect2{margin-top:0;padding-top: 0.3rem;}
+			/*弹出菜单*/
+			.menu{width: 2.5rem;position: absolute;top:40px !important;right:0;left:inherit !important;background-color:#313131;}
+			.mui-popover .mui-popover-arrow{display: none;}
+			.menu ul li a{color: #fff;line-height: 0.6rem;font-size: 0.30rem;}
+			.menu ul{-webkit-padding-start: 0px;}
+			.menu ul li{text-align: left;padding-left: 0.5rem;}
+			.mui-backdrop{display: none;}
+		</style>
+	</head>
+	<body>
+	<div id="app">
+		<header id="header" class="mui-bar mui-bar-nav head" >
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left back"></a>
+			<h1 class="mui-title title">{{a.love_star_name}}</h1>
+			<a class="mui-icon mui-pull-right iconfont icon-menu" href="#popover"></a>
+		</header>
+		<!--弹出菜单-->
+		<div id="popover" class="mui-popover menu">
+			<ul class="select">
+				<li><a href="#" class="fancoll" v-bind:star-id="a.love_star_id">粉丝圈</a></li>
+				<li><a href="#" v-bind:star-id="a.love_star_id" class="dynamic">粉丝动态</a></li>
+				<li><a href="#" class="myself">我的发表</a></li>
+			</ul>
+		</div>
+		<div class="mui-content">
+			<div class="banner">
+				<img :src="a.love_star_img" class="str_img"/>
+				<div class="ban_right mui-pull-left">
+					<p class="name">{{a.love_star_name}}</p>
+					<p><span class="country">{{a.love_star_country}}</span><span class="nation">{{a.love_star_nation}}</span></p>
+					<p class="data"><span class="date">出生日期:{{a.love_star_birth}}</span></p>
+					<p class="data"><span>身高：{{a.love_star_height}}</span><span class="weight">体重:{{a.love_star_weight}}</span></p>
+					<p class="data"><span class="place">出生地：{{a.love_star_address}}</span></p>
+				</div>
+			</div>
+			<div class="fan">
+				<div class="con_slid">
+					<a class="item" href="#item1"><span class="text">作品</span><span class="num">{{a.love_star_works==null?0:a[0].love_star_works}}</span></a>
+					<a class="item" href="#item2mobile"><span class="text">粉丝</span><span class="num">{{a.love_star_fan==null?0:a[0].love_star_fan}}</span></a>
+					<a class="item special" href="#item3mobile"><span class="text">人气排名</span><span class="num">2</span></a>
+				</div>				
+				<p class="collect">电影</p>
+				<div class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted roll">
+    				<div class="mui-scroll">
+    					<a href="#"><img src=""/><span>幻化丽人</span></a>							
+						<a href="#"><img src=""/><span>幻化丽人</span></a>
+						<a href="#"><img src=""/><span>幻化丽人</span></a>
+						<a href="#"><img src=""/><span>幻化丽人</span></a>
+						<a href="#"><img src=""/><span>幻化丽人</span></a>
+						<a href="#"><img src=""/><span>幻化丽人</span></a>
+					</div>
+				</div>
+				<p class="collect collect2">电视剧</p>
+				<div class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted roll">
+    				<div class="mui-scroll">
+    					<a href="#"><img src=""/><span>幻化丽人</span></a>							
+						<a href="#"><img src=""/><span>幻化丽人</span></a>
+						<a href="#"><img src=""/><span>幻化丽人</span></a>
+						<a href="#"><img src=""/><span>幻化丽人</span></a>
+						<a href="#"><img src=""/><span>幻化丽人</span></a>
+						<a href="#"><img src=""/><span>幻化丽人</span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/jquery-3.1.1.js"></script>
+		<script src="../js/ajax.js"></script>
+		<script src="../js/vue.js"></script> 
+		<script type="text/javascript">
+			mui.init({})			
+			$('body').on('tap','.fancoll',function(){
+				mui.openWindow({
+					url:'nationality.html',
+					id:'nationality',
+					extras:{
+						love_star_id:$(this).attr('star-id'),
+					}
+				})
+			})
+			mui('body').on('tap','.dynamic',function(){
+				mui.openWindow({
+					url:'dynamic.html',
+					id:'dynamic',
+					extras:{
+						love_star_id:$(this).attr('star-id')
+					}
+				})
+			})
+			mui('body').on('tap','.myself',function(){
+				mui.openWindow({
+					url:'mysub.html',
+					id:'mysub'
+				})
+			})
+			mui.plusReady(function(){
+			    var starid=plus.webview.currentWebview().love_star_id;
+				ajaxMain('/Home/Love/star_details',{love_star_id:starid},
+				function(datas){
+					var vue=new Vue({
+						el:'#app',
+						data:datas
+					})
+				})
+			})			
+		</script>
+	</body>
+
+</html>

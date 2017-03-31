@@ -1,0 +1,198 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>搜索好友</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/media.css" rel="stylesheet"/>
+		<link href="../css/iconfont.css" rel="stylesheet"/>
+		<style type="text/css">
+		*{margin: 0;padding: 0;font-family: simsun;}
+		html,body {
+			height: 100%;
+			margin: 0px;
+			padding: 0px;
+		}
+		ul li{list-style-type: none;}
+		img{border: none;display: block;}
+		.head{background-color:  #313131;}
+		.head a,.title{color: #fff;}
+		.search{border-radius:8px;background-color: #fff;height: 30px;
+			margin-top: 8px !important;
+			width: 80%;
+			margin-left:35px;
+			position: relative;
+		}
+		.search input{width: 80%;height: 100%;border: none;position: absolute;margin: 0;padding:0 10px;font-size:14px;}
+		.sou{position:absolute;left:5px;top:-3px;font-size:20px !important;}
+		.content{padding: 0.1rem 0;height: 100%;}
+		/*雷达图*/
+		.box{width: 100%;height: 100%;position: relative;}
+		.pic{border-radius:50%;display: block;position:absolute;}
+		.pic img{width: 100%;height: 100%;border-radius: 50%;}
+		.pic_2{width: 0.5rem;height: 0.5rem;top:35%;left:65%}
+		.pic_self{width:0.9rem;height:0.9rem;top:35.9%;left:44.35%}
+		.pic_1{width: 0.7rem;height: 0.7rem;top:50%;left:24%}
+		/*搜索结果*/
+		.boxmess{width: 100%;}
+		.self_message{width: 100%;padding:0.4rem 0.5rem;min-height:1.8rem;}
+		.self_message img{width: 1.1rem;height: 1.1rem;border-radius: 50%;float: left;}
+		.message{float: left;padding:0.15rem 0.1rem;}
+		.message span{display: block;line-height: 0.43rem;}
+		.name{font-size: 0.35rem;color:#5e5e5e;font-weight: bold;}
+		.sign{font-size: 0.26rem;color: #777;}
+		.add{margin-top: 0.35rem;font-size: 0.4rem !important;color: #777;}
+		.active{display: none;}
+		/*发送消息*/
+		.send{clear: both;}
+		.send label{padding:0.5rem 0.5rem 0;display:block;color: #777;margin-bottom: 0.1rem;font-size:0.32rem;}
+		.word{border: none;height:3.0rem;padding: 0.2rem 0.5rem;color: #777;font-size: 0.30rem;}
+		.btn{width:24%;border-radius:20px;margin-left:38%;color:#777;border: 1px solid #a58bf9;font-size:0.35rem;}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav head" >
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<div class="search"><span class="mui-icon iconfont icon-sou sou"></span><input type="text" placeholder="账号/手机号" class="sousuo"/></div>			
+		</header>
+		<div class="mui-content content">
+			<div class="box">
+				<div id="main" style="width:100%;height:80%"></div>
+				<a href="#" class="pic pic_1"><img src="../img/headpic.jpg" /></a>
+				<a href="#" class="pic pic_self"><img src="../img/headpic.jpg" /></a>
+				<a href="#" class="pic pic_2"><img src="../img/headpic.jpg" /></a>
+			</div>
+			<div class="boxmess">
+			<!--<div class="self_message person active">
+				<img src="../img/headpic.jpg" />
+				<div class="message">
+					<span class="name">一只小妖</span>
+					<span class="sign">做一个微笑的女孩子</span>
+				</div>
+				<a class="iconfont icon-tianjia mui-pull-right add" href="#"></a>
+			</div>
+			<form action="" method="post" class="send active">
+				<label >填写验证信息</label>
+				<textarea class="word">刘天仙的迷妹</textarea>
+				<button type="" class="mui-btn mui-btn-outlined btn">发送</button>
+			</form>-->
+			</div>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/jquery-3.1.1.js"></script>
+		<script src="../js/ajax.js"></script>
+		<script src="../js/echarts.min.js" ></script>
+		<script type="text/javascript">
+			mui.init();
+			var myChart = echarts.init(document.getElementById('main'));
+			option = {
+			radar: [
+			    {
+			        indicator: [
+			            { text: '' },
+			            { text: '' },
+			            { text: '' },
+			        ],
+			        center: ['50%', '50%'],
+			        radius:'60%',
+			        startAngle:60,
+			         startAngle:100,
+			        splitNumber: 5,
+			        shape: 'circle',
+			        splitArea: {
+			            areaStyle: {
+			                color: [],
+			                shadowColor: 'rgba(0, 0, 0, 0.3)',
+			                shadowBlur:10
+			            }		          		            
+			        },			      
+			        axisLine: {
+			            lineStyle: {
+			                color: 'rgba(189, 225, 215, 1)',
+			                width:'2'
+			            }
+			        },
+			        splitLine: {
+			            lineStyle: {
+			                color: 'rgba(189, 225, 215, 1)',
+			                width:'3'
+			            }
+			        }
+			    }
+			],
+			series: [
+			    {
+			        type: 'radar',
+			        data: [
+			            {
+			                symbol: 'rect',
+			                symbolSize: 5,
+			                lineStyle: {
+			                    normal: {
+			                        type:'dashed',
+			                        width:'0'
+			                    }
+			                }
+			            }
+			        ]
+			    }			            			        			    
+			]
+			}
+			myChart.setOption(option);
+			window.onresize = function () {
+				myChart.resize(); 				
+			}
+//			监听事件
+			$('.sousuo').bind('input propertychange', function(){
+				if($('.sousuo').val()!=''){
+					$('.box').hide();
+					$('.boxmess').show();
+					$('.person').removeClass('active');										
+					ajaxMain('/Home/Love/search_Friends',{'love_user_name':$('.sousuo').val()},
+					function(data){
+						var sum='';
+						var len=data.aa==null?0:data.aa.length;
+						for(var i=0;i<len;i++){
+							if(data.return[i]=='1006'){
+								sum+='<div class="li"><div class="self_message person"><img src="'+data.aa[i].love_user_img+'"/>'
+								+'<div class="message"><span class="name">'+data.aa[i].love_user_name+'</span>'
+								+'<span class="sign">'+data.aa[i].love_user_gender+'</span></div>'
+								+'<a class="iconfont icon-tianjia mui-pull-right add" href="#"></a></div>'
+								+'<form action="" method="post" class="send active"><label >填写验证信息</label><textarea class="word" placeholder="你好！我是.."></textarea>'
+								+'<button type="button" class="mui-btn mui-btn-outlined btn" data-id="'+data.aa[i].love_user_id+'">发送</button></form></div>'	
+							}else{
+								sum+='<div class="self_message person"><img src="'+data.aa[i].love_user_img+'" />'
+								+'<div class="message"><span class="name">'+data.aa[i].love_user_name+'</span>'
+								+'<span class="sign">'+data.aa[i].love_user_gender+'</span></div></div>'
+							}
+						}
+						$('.boxmess').html(sum);
+//						console.log($('.boxmess').html(sum))
+					})
+				}else{
+					$('.boxmess').hide();
+					$('.box').css('display','block');	
+				}
+			})
+//			显示send
+			mui('.content').on('tap','.add',function(){
+				$(this).hide();
+				$(this).parents('.li').children('.send').removeClass('active')
+			})
+//			发送添加好友请求
+			mui.plusReady(function(){
+			var id=plus.storage.getItem('user_id');
+				mui('.content').on('tap','.btn',function(){
+					ajaxMain('/Home/Love/Add_friends',{love_user_id:id,love_friends_id:$(this).attr('data-id')},
+					function(data){
+						console.log(data.return)
+						alert('已发送');
+					})
+				})				
+			})
+		</script>
+	</body>
+
+</html>

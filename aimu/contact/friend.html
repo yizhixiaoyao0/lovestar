@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>社交首页</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/media.css" rel="stylesheet"/>
+		<link href="../css/iconfont.css" rel="stylesheet"/>
+		<style type="text/css">
+		*{margin: 0;padding: 0;font-family: simsun;}
+		ul li{list-style-type: none;}
+		img{border: none;display: block;}
+		.head{background-color:  #313131;}
+		.head .add{font-size: 20px;height: 100%;padding-top:12px;}
+		.head a,.title{color: #fff;}
+		/*主要内容*/
+		.content{padding: 0 0.3rem;background-color: #fff;}
+		.scroll{width: 100%;height: 100%;}
+		/*自己的信息*/
+		.self_message{width: 100%;padding: 0.2rem ;}
+		.self_message img{width: 1.1rem;height: 1.1rem;border-radius: 50%;float: left;}
+		.message{float: left;padding:0.2rem 0.3rem;}
+		.message span{display: block;line-height: 0.38rem;}
+		.name{font-size: 0.38rem;color:#5e5e5e;font-weight: bold;margin-bottom: 0.1rem;}
+		.sign{font-size: 0.18rem;color: #777;}
+		/*s搜索*/
+		.search{clear: both;width:90%;padding-top: 0.15rem;border-bottom: 1px solid #ccc;position: relative;margin: 0 auto;}
+		.sou{position: absolute;top: 0.25rem;font-size:0.45rem ;color: #777;}
+		.search input{width: 80%;border: none;margin-bottom:1px;margin-left:0.6rem;padding:0;height:0.6rem;font-size: 0.3rem;}
+		/*朋友列表*/
+		.list{width: 100%;min-height:9.3rem;}
+		.list li{height:1.1rem;border-bottom:1px solid #ccc ;margin-top: 0.2rem;}
+		.list .name{font-size: 0.32rem;margin-bottom: 0;}
+		.list .message{padding-top:0.15rem;width:75%;}
+		.list img{width:0.9rem;height:0.9rem;}
+		.list .sign{font-size: 0.20rem;color: #999;}
+		.badge{margin-top: 0.3rem;}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+		<header class="mui-bar mui-bar-nav head" >
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<a class="mui-icon mui-pull-right iconfont icon-tianjia add"></a>
+		</header>
+		<div class="mui-content content" id="pullrefresh">
+			<div class="scroll">
+				<div class="self_message">
+					<img :src="aa.love_user_img" />
+					<div class="message">
+						<span class="name">{{aa.love_user_name}}</span>
+						<span class="sign">{{aa.love_user_gender}}</span>
+					</div>
+				</div>
+				<div class="search">
+					<span class="mui-icon iconfont icon-sou sou"></span>
+					<input type='text' value="" name="search" placeholder="搜索"/>
+				</div>
+				<ul class="list self_message" >
+					<li v-for="item in o | orderBy 'love_information_id' -1">
+						<a href="#">
+							<img src="../img/headpic.jpg" />
+							<div class="message">
+								<span class="name">{{item.love_user_name}}</span>
+								<span class="sign mui-ellipsis" >做一个微笑的女孩啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</span>
+							</div>
+							<span class="mui-badge mui-pull-right mui-badge-danger badge" >2</span>
+						</a>					
+					</li>
+				</ul>
+			</div>
+		</div>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/jquery-3.1.1.js"></script>
+		<script src="../js/ajax.js"></script>
+		<script src="http://static.runoob.com/assets/vue/1.0.11/vue.min.js"></script>
+		<script type="text/javascript">
+			mui.init({});
+//			friend渲染		
+			mui.plusReady(function(){
+				var id=plus.storage.getItem('user_id');
+				ajaxMain('/Home/Love/friends_Interface',{love_user_id:id},
+				function(data){					
+					var vue=new Vue({
+						el:'#app',						
+						data:data
+					})	
+//					if(data.return!='1004'){
+//						for(var i=data.o.length-1;i>=0;i--){
+//							console.log(data.o[data.o.length-2].love_user_id)
+//							$('.list')[0].innerHTML+='<li><a href="#" data-id="'+data.o[i].love_user_id+'"><img src="'+data.o[i].love_user_img+'" />'					
+//							+'<div class="message"><span class="name">'+data.o[i].love_user_name+'</span>'
+//							+'<span class="sign mui-ellipsis">'+data.o[i].love_user_gender+'</span></div>'
+//							+'<span class="mui-badge mui-pull-right mui-badge-danger badge">2</span></a></li>'																							
+//						}
+//					}					
+				})
+			})
+//			进入添加好友
+			mui('body').on('tap','.add',function(){
+				mui.openWindow({
+					url:'add.html',
+					id:'add',
+				})
+			})
+//			进入聊天
+			$('.list').on('tap','a',function(){
+				mui.openWindow({
+					url:'chat.html',
+					id:'chat',
+					extras:{
+						love_friends_id:$(this).attr('data-id')
+					}
+				})
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>我的喜欢</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<script src="../js/mui.min.js"></script>						
+		<link href="../css/media.css" rel="stylesheet" />
+		<link href="../css/iconfont.css" rel="stylesheet"/>
+		<style>
+		*{font-family: simsun;}
+		    span,li,a,p{display: block;}
+			#refreshContainer{background-color: #fff;padding: 0.96rem 0 0.91rem 5%;}
+			.nav{background-color: #876eb2;}
+			.nav h1,.back{color: #ddd;font-size: 0.31rem;}
+			.mycare{width:85%;height: 2.1rem;margin-left: 7.5%;}
+			.mui-content{background-color: #fff;}
+			.mycare div{font-weight: bold;color: #333;font-size: 0.38rem;padding-top: 0.19rem;}
+			.mycare div p{font-size: 0.22rem;font-weight: 100;color: #858585;height: 0.8rem;margin-top: 0.1rem;}
+			.mycare span{width: 23%;height: 0.38rem;font-size: 0.76rem;color: #876eb2;padding-right:70%;line-height:0.8rem ;}
+    		.mui-table-view:before,.mui-table-view-cell:after {height: 0;}
+			.dian div{float: left;}
+			.list a,.list{padding: 0 !important;margin:0 0 0.2rem 0 !important;}
+			.list{margin-bottom: 0.57rem;background-color: #fff;width:85%;margin-left:7.5%!important;}			
+			.nei{width: 65%;} 
+			.nei span{width: 65%;padding:0.38rem 0 0 10%;color: #999;}
+			.nei div{width: 98%;padding:0.19rem 0 5px 10%;font-size: 0.27rem;color: #aaa;overflow: hidden;}
+			.image{width: 35%;height:100%;}
+			.image img{width: 100%;height: 100%;}
+			.mui-table-view-cell>a:not(.mui-btn){white-space:normal}
+			.dian{width:100%;background-color: #f5f5f7;height: 2.3rem;}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left back"></a>
+			<h1 class="mui-title">我的关注</h1>
+		</header>
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+			  <div class="mui-scroll">
+			    <!--数据列表-->
+			    <div class="mycare">
+			    	<span class="mui-icon iconfont icon-heart mui-pull-right" ></span>
+		      	            <div class="mui-media-body">
+		      	               我的关注
+		      	            <p class="mui-ellipsis">共关注5格明星</p>
+		      	            </div>
+			    </div>
+			    <ul class="mui-table-view mui-table-view-chevron" id="myAttention">
+		      	    <!--<li class="mui-table-view-cell mui-media list">
+			      	     <a href="javascript:;" class="dian">		      	            
+			      	    <div class="nei">
+			      	    <span></span>
+			      	    <div class=""></div>
+			      	     </div>
+			      	<div class="image"><img  src="'+datas.data[i].love_star_img+'"></div></a></li>    	         	    -->
+			    </ul>
+			  </div>
+			</div>
+		<script src="../js/jquery-3.1.1.js"></script>
+		<script src="../js/ajax.js"></script>
+		<script type="text/javascript">
+			mui.init({
+				pullRefresh : {
+				    container:"#pullrefresh",
+				    up: {					   
+					    contentrefresh : "正在刷新...",
+					    callback :pullfresh					     
+				    }
+				}
+			});
+			ajax()
+			function pullfresh(){
+				setTimeout(function() {
+					mui('#pullrefresh').pullRefresh().endPullupToRefresh();
+					ajax();
+				}, 1000);
+			}
+			function ajax(){
+				mui.plusReady(function(){
+					var id=plus.storage.getItem('user_id');
+					ajaxMain("/Home/Love/display_follow",{love_user_id:id},
+			  	    function(datas){
+		    	  	    var dataleng=datas.data.length;
+		    	  	    var len=dataleng-$('#myAttention .list').length-1;   	  	  
+		    	  	    for(var i=len;i>=len-4&&i>=0;i--){		    	  	    	
+		    	  	    	$('#myAttention')[0].innerHTML+='<li class="mui-table-view-cell mui-media list">'
+			      	        +'<a href="javascript:;" class="dian">'		      	            
+			      	        +'<div class="nei">'
+			      	        +'<span>'+datas.data[i].love_star_name+'</span>'
+			      	        +' <div class="">'+datas.data[i].love_star_txt+'</div>'
+			      	        + '</div>'
+			      	        +'<div class="image"><img  src="'+datas.data[i].love_star_img+'"></div></a></li> '
+			      	    } 	  	   	    	
+		  	        }) 	 
+				})
+			}
+        </script>
+		
+	</body>
+
+</html>

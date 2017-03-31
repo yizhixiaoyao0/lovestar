@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>粉丝动态</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/media.css" rel="stylesheet"/>
+		<link href="../css/iconfont.css" rel="stylesheet"/>
+		<style type="text/css">
+		*{margin: 0;padding: 0;font-family: simsun;}
+		ul li{list-style-type: none;}
+		img{border: none;display: block;}
+		.head{background-color:  #313131;}
+		.head .add{font-size: 20px;height: 100%;padding-top:12px;}
+		.head a,.title{color: #fff;}
+		/*内容*/
+		.list{width: 100%;padding:0 0.3rem;}
+		.list li{margin-bottom: 0.2rem;background-color: #fff;width:100% ;padding:0.3rem 0.2rem 0.5rem;}
+		.content_top img{width: 1.0rem;height: 1.0rem;border-radius: 50%;float: left;}
+		.contop_left{float: left;margin-left: 0.2rem;padding-top: 0.3rem;}
+		.contop_left span{display: block;line-height: 0.27rem;}
+		.name{font-size: 0.27rem;color:#5a5a5a;font-weight: bold;}
+		.time{font-size: 0.23rem;color: #999;}
+		.mian_text{clear: both;font-size: 0.25rem;color: #999;padding:0.1rem 0;border-bottom: 1px solid #ccc;}
+		.like{width: 20%;height: 0.5rem;display: block;float: right;text-align: right;color: #777;padding-top: 0.02rem;}
+		.heart{font-size: 0.38rem;}
+		.num{font-size: 0.28rem;}
+		/*发表的图片*/
+		.context_img{width: 100%;height: 2.3rem;display: block;}
+		.context_img li{width: 25%;padding: 0.15rem 0.1rem;display: block;float: left;height: 100%;margin-bottom: 0;}
+		.context_img li img{height: 100%;width: 100%;}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav head" >
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title title">动态</h1>
+			<a class="mui-icon mui-pull-right iconfont icon-tianjia add"></a>
+		</header>
+		<div class="mui-content mui-scroll-wrapper" id="popover">
+			<div class="mui-scroll">
+				<ul class="list">
+					<li>
+						<div class="content_top">
+							<img src="../img/headpic.jpg" />
+							<div class="contop_left">
+								<span class="name">霍福德</span>
+								<span class="time">6：12</span>
+							</div>
+						</div>
+						<div class="mian_text">
+							<div class="text">赵丽颖，加油！啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</div>	
+						</div>
+						<a href="#" class="like"><span class="mui-icon iconfont icon-heart heart"></span><span class="num">12</span></a>
+					</li>
+					<li>
+						<div class="content_top">
+							<img src="../img/headpic.jpg" />
+							<div class="contop_left">
+								<span class="name">霍福德</span>
+								<span class="time">6：12</span>
+							</div>
+						</div>
+						<div class="mian_text">
+							<div class="text">赵丽颖，加油！啊啊啊啊啊啊啊啊啊啊啊啊</div>
+							<ul class="context_img">
+								<li><img src="../img/blbg.jpg"/></li>
+								<li><img src="../img/blbg.jpg"/></li>
+								<li><img src="../img/blbg.jpg"/></li>
+								<li><img src="../img/blbg.jpg"/></li>
+							</ul>
+						</div>
+						<a href="#" class="like"><span class="mui-icon iconfont icon-heart heart"></span><span class="num">12</span></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/jquery-3.1.1.js"></script>
+		<script src="../js/ajax.js"></script>
+		<script type="text/javascript">
+			mui.init({
+				pullRefresh: {
+					container: '#pullrefresh',
+					up: {
+						contentrefresh: '正在加载...',
+						callback: pullupRefresh
+					}
+				}
+			})
+			var count = 0;
+			function pullupRefresh() {
+				setTimeout(function() {
+					mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 2)); 			
+				}, 1500);
+			}
+		function ajax(){
+			mui.plusReady(function(){
+				var id=plus.storage.getItem('user_id');
+				ajaxMain('/Home/Love/Obtain_dynamic',{love_star_id:id},
+				function(data){
+					$('.list')[0].innerHTML+='<li><div class="content_top"><img src="" />'
+					+'<div class="contop_left">span class="name">'	
+				})						
+			})	
+		}
+		mui('.head').on('tap','.add',function(){
+			mui.openWindow({
+				url:'addreview.html',
+				id:'addreview'
+			})
+		})
+		</script>
+	</body>
+
+</html>

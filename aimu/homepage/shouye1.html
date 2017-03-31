@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>首页</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/media.css" rel="stylesheet" />
+		<script src="../js/mui.min.js"></script>
+		<link href="../css/iconfont.css" rel="stylesheet"/>
+		<script src="../js/jquery-3.1.1.js"></script>		
+		<style>
+		 span,img,li{display: block;}
+			li{list-style: none;}
+			.head{width: 100%;height: 3.45rem;}
+			.head img{width: 100%;height: 100%;}
+			.nav{background: none;border: 0;width: 100%;height: 0.38rem;position: fixed;top: 0;padding: 0.29rem ;}
+			.nav a{color: #777777;font-weight: 100;font-size: 0.42rem;}
+			.nav .name{font-size: 0.31rem;}
+			.lan{width: 60% !important;height: 0.84rem !important;border-radius:10px !important;background-color: #ffffff;
+			position: absolute !important;left:20%;top:2.93rem;padding:0.09rem;}
+			.mui-scroll,.lan ul,.lan li a{display: block;width:100%;height:100%;}
+			.mui-scroll{height:100% !important;width:15.0rem;z-index:60;}
+			.lan ul{margin-left: 0.12rem;-webkit-margin-after: 0em;z-index:65;width:15.0rem;}
+			.lan li{width:0.80rem;border-radius: 50%;float: left;height: 100%;z-index:60;position: relative;}
+			.lan li a{border-radius: 50%;}
+			.cover{position: absolute;top:-0.1rem;background-color: #fff;width:100%;height:100%;border-radius: 50%;opacity: 0.4;}
+			.letter1 .active{opacity: 0;}
+			.lan li img{border-radius: 50%;width: 80%;height:83%;}
+			 ul{-webkit-padding-start: 0px !important;-webkit-margin-before: 0 !important;}
+			.content{padding-top: 0.57rem;}
+			.mui-segmented-control{display:block}
+			.content div{width: 100%;float: left;padding-left: 3.5%;}
+			.content div ul{column-count: 2;position: relative;}
+			.content div li{width:47%;margin: 0.19rem 0.2rem 0 0;background-color: #ffffff;position: absolute;}
+			.content div li:nth-child(2n){right: 0;}
+			.content div li img{width: 100%;}
+			.neirong{width: 100%;height: 0.77rem;}
+			.neirong span{height: 0.77rem;line-height: 0.28rem;text-align: center;float: left;}
+			.wenzi{width: 65%;font-size: 0.23rem;padding:5px 0 0 10%;color: #777777;display:block;
+			-moz-box-orient: vertical;float:left;overflow: hidden;height: 0.58rem !important;}
+			.zan{width: 20%;font-size: 0.54rem;padding:0.19rem 0 0 10%;color: #8f6ff8;}
+		</style>
+	</head>
+	<body>		
+		<header class="nav">
+		    <a class="mui-icon mui-pull-left name">李敏镐</a>
+		    <a href="#" class="mui-icon iconfont icon-sou mui-pull-right search"></a>		   
+		</header>
+		<div class="head">
+			<img src="../img/shouye.png"/>
+		</div>
+		<div class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted lan">
+			<div class="mui-scroll letter1">
+				<ul class="starpic">
+					<!--<li><a href="#"><img src="../img/headpic.jpg" /></a><div class="cover"></div></li>-->
+				</ul>
+			</div>
+		</div>
+		<div class=" content">
+			<div class="left">
+				<ul>
+					<!--<li class="list"><a href="#"><img src="../img/blbg.jpg" class="star"/></a><span class="neirong"><span class="wenzi">永远都有不够的李敏镐</span><span class="mui-icon iconfont icon-star-outline mui-pull-right zan"></span></span></li>-->
+				</ul>
+			</div>			
+		</div>
+		<script src="../js/jquery-3.1.1.js"></script>
+		<script src="../js/ajax.js"></script>
+		 <script type="text/javascript">
+			mui.init({});
+			mui('.lan').scroll({
+				scrollX: true,			
+				deceleration: 0.0005,
+				bounce: true,
+			});
+			mui.plusReady(function(){
+			    userid=plus.storage.getItem('user_id');
+				starpic(userid);
+			})
+			function starpic(id){
+//				明星头像渲染
+				ajaxMain('/Home/Love/home_page',{love_user_id:id},
+				function(datas){
+					var len=datas.data==null?0:datas.data.length;
+					for(var i=len-1;i>=0;i--){
+						if(i==len-3){
+							$('.name')[0].innerHTML=datas.data[i].love_star_name;
+						    $('.starpic')[0].innerHTML+='<li class="pic"><a href="javascript:;" data-id="'+datas.data[i].love_star_id+'" data-name="'+datas.data[i].love_star_name+'"><img src="'+datas.data[i].love_star_img+'" /></a><div class="cover active"></div></li>';
+						    ajax(datas.data[i].love_star_id);
+						}else{
+							$('.starpic')[0].innerHTML+='<li class="pic"><a href="javascript:;" data-id="'+datas.data[i].love_star_id+'" data-name="'+datas.data[i].love_star_name+'"><img src="'+datas.data[i].love_star_img+'" /></a><div class="cover"></div></li>';
+						}
+					}
+				})
+//				咨询点击
+				mui(".left").on("tap","a",function(){
+					console.log($(this).parents('.list').attr('data_id'))
+					mui.openWindow({
+		        		url:'shouye2.html',  
+		            	id:'shouye2', 
+		            	extras:{
+		            		love_consultation_star:$(this).parents('.list').attr('data_id')		            	
+		            	}
+		        	})	        	
+	            })
+//				咨询渲染
+				$('.letter1').on('tap','li',function(){
+					$('.left ul')[0].innerHTML='';
+					$('.name')[0].innerHTML=$(this).children('a').attr('data-name');
+					ajax($(this).children('a').attr('data-id'))	;				
+					$(this).children('.cover').css('opacity','0');
+					$(this).siblings().children('.cover').css('opacity','0.4')
+				})
+				function ajax(star){
+					var len=document.getElementsByClassName('pic').length;
+					ajaxMain('/Home/Love/information_return',{love_star_id:star,love_user_id:id},
+					function(datas){
+						leng=datas.data==null?0:datas.data.length
+						for(var i=leng-1;i>=0;i--){					
+							if(i>1){
+								var fz=window.getComputedStyle($('html')[0]).fontSize
+								fznum=fz.replace("px",'')*1
+								var num=($('.left li')[i-2].offsetTop+$('.left li')[i-2].offsetHeight+4)/fznum
+								$($('.left li')[i]).css('top',num+'rem');						
+							}
+//							是否收藏							
+							collect=datas.v=='1005'?'icon-icon30':'icon-star-outline';
+							$('.left ul')[0].innerHTML+='<li class="list" data_id="'+datas.data[i].love_consultation_star+'"><a href="#"><img src="'+datas.data[i].love_consultation_img+'" class="star"/></a><span class="neirong">'
+							+'<span class="wenzi">'+datas.data[i].love_consultation_word+'</span><span class="mui-icon iconfont '+collect+' mui-pull-right zan"></span></span></li>'
+						}					
+					})
+				}
+//			咨询收藏
+				$('.left').on('tap','.zan',function(){
+					ajaxMain('/Home/Love/collection_information',{love_user_id:id,love_consultation_star:$(this).parents('.list').attr('data_id')},
+					function(datas){
+						alert('收藏成功')
+					})
+					$(this).removeClass('icon-star-outline').addClass('icon-icon30');
+				})
+			}
+//			搜索
+			mui(".nav").on("tap",".search",function(){	
+	        	mui.openWindow({
+	        		url:'shouye-search.html',  
+	            	id:'shouye-search.html',  
+	        	})
+            })
+		</script>
+	</body>
+
+</html>

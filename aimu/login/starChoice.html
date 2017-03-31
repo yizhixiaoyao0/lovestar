@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>明星选择</title>
+		<script src="../js/mui.min.js"></script>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<!--自定义样式-->
+		<script src="../js/jquery-3.1.1.js"></script>  <!--jquery-->
+		<link rel="stylesheet" href="../css/iconfont.css" /><!--字体图标-->
+		<link rel="stylesheet" href="../css/media.css" />	<!--媒体查询	-->
+		<link rel="stylesheet" href="../css/publicCSS.css"/><!--公用样式	-->
+		<link rel="stylesheet" href="../css/starChoice.css"/><!--css样式-->
+	</head>
+	<body>
+		<!--导航		-->
+		<header class="mui-bar mui-bar-nav star-select">
+			<a href="" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<a href="" class=" mui-icon iconfont icon-sou mui-pull-right" style="padding-top: 0.28rem;"></a>
+		</header>
+		<div class="mui-content mui-scroll-wrapper" id="pullrefresh">
+			<div class="mui-sroll">
+			</div>
+		</div>	
+		<button class="mui-btn mui-btn-outlined btn">确认</button>
+		    <!--模态框--><!--未触发-->
+		        <div id="picture" class="mui-popover mui-popover-action mui-popover-bottom star-hint" style="display: none;">
+					<ul class="mui-table-view">						
+						<li class="mui-table-view-cell">至少选择5个明星喔！</li>																				
+					</ul>
+		      </div>
+ 		</body>
+ 		<script src="../js/jquery-3.1.1.js"></script>
+ 		<script src="../js/ajax.js"></script>
+		<script type="text/javascript">		
+		    mui.init({
+				pullRefresh: {
+					container: '#pullrefresh',
+					up: {
+						contentrefresh: '正在加载...',
+						callback: pullupRefresh,
+					}
+				}
+			});
+			var con='';
+			var count=0;
+			var arr=[];
+		    ajax();
+			mui.plusReady(function(){
+				userid=plus.webview.currentWebview().love_user_id;
+				toggle(userid);
+			})	
+		    function pullupRefresh(){
+				setTimeout(function() {
+					mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 2));
+					ajax();
+				}, 1000);
+			}
+		    $("body").on('click','.attention',function(){
+		    	var index=$(this).parents('.mui-card').index();
+		    	if($(this).hasClass('heart')==false){
+		    	 	ajaxMain('/Home/Love/One_follo',{},
+		    	 	function(data){
+		    	 		arr.push(data.userarr[data.userarr.length-index-1].love_star_id);
+		    	 	})
+		    	}
+    	  	    $(this).hide();
+    	  	    $(this).siblings().css("display","block");
+    	  	})    	  
+		    function toggle(id){
+			    $('body').on('tap','.btn',function(){
+			    	if(arr.length>=5){
+				    	ajaxMain('/Home/Love/One_follow',{love_user_id:id,love_star_id:arr},function(){
+				    		mui.openWindow({
+				    		url:'../homepage/model.html',
+				    		id:'model',
+				    		})
+				    	})	
+				    }else{
+				    	alert('至少关注五个以上的明星');
+				    }
+			    })
+		    }
+		    function ajax(){
+		    	ajaxMain('/Home/Love/One_follo',{},
+				function(data){	
+					var conlen=document.getElementsByClassName('mui-card').length;
+					var len=data.userarr.length;
+					for(var i=len-conlen-1;i>=len-conlen-3&&i>=0;i--){
+						data.userarr[i].love_star_fans=data.userarr[i].love_star_fans==null?0:data.userarr[i].love_star_fans;
+						$('.mui-sroll')[0].innerHTML+='<div class="mui-card"><div class="mui-card-content star-pt">'				  	  
+				  	   	+'<img src="'+data.userarr[i].love_star_img+'" class="star-pic" />'				  	   
+				  	   	+'<div class="mui-card-content star-text"><div class="mui-pull-right">'
+				  	   	+'<button class="mui-btn attention">关注+</button>'
+				  	   	+'<button class="mui-icon iconfont icon-guanzhu attention heart"></button></div>'				  	   	     	
+				  	   	+'<div class="mui-pull-left mui-content star-content"><div class="mui-row">'    	 
+				  	   	+'<span class="name colour">'+data.userarr[i].love_star_name+'</span>'     
+				  	   	+' <a href="#" class="colour">'+data.userarr[i].love_star_fans+'<span>粉丝</span></a></div>'   	  
+						+'<div class="mui-row"><ul class="portrait"><li><img src="../img/zx1.png"/></li><li><img src="../img/zx1.png"/></li><li><img src="../img/zx1.png"/></li>'
+				  	   	+' </ul></div></div></div></div></div>'    	  				  	   	     						  	   	     	  						  	   	     	  				  	   	     	    			  	   	     	    					  	   	     					  	   	   				  	  					   						
+					}
+				})
+		    }
+		</script>			
+</html>

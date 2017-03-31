@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>修改昵称</title>
+		<script src="../js/mui.min.js"></script>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<script src="../js/jquery-3.1.1.js"></script>
+		<link rel="stylesheet"  href="../css/media.css" />
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<link rel="stylesheet" href="../css/publicCSS.css" />
+		<link rel="stylesheet" href="../css/personal.css" />
+	</head>
+	<body>
+		<div class="overall nickname" style="background: #FFFFFF;">		
+		<!--   头部-->
+		<header class="mui-bar mui-bar-nav set-bar">
+			<h1 class="mui-title head-title">修改昵称</h1>
+			<a href="" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left head-title"></a>
+			<button type="button" class="mui-btn  mui-pull-right save">完成</button>
+		</header>
+	       <div>
+	       	  <input type="text"  value="" id="name"/>
+	       </div>			
+	 </div>		  
+	  <script type="text/javascript">
+	  	    mui.init();	  	    	  	   
+			mui(".set-bar").on('tap',".save",function(){								
+				plus.webview.create("personalSet.html","personalSet",{},{myname:$("#name").val()}).show('slide-in-right');
+			})				 			 			
+	  </script>	  
+	</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>个人中心主页面</title>
+		<script src="../js/mui.min.js"></script>
+		<link href="../css/mui.min.css" rel="stylesheet" />	
+		<link rel="stylesheet"  href="../css/media.css" />
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<link rel="stylesheet" href="../css/publicCSS.css" />
+		<link rel="stylesheet" href="../css/personal.css" />		
+	</head>
+
+	<body>		
+		<!--   头部-->
+			<header class="mui-bar mui-bar-transparent">
+				<h1 class="mui-title head-title">个人中心</h1>
+			</header>
+		<div class="head-content overall">		
+			<!--     头部内容	-->
+			<div class="head-row overall">
+				<div class="personage-img">
+					<img src="" class="overall" />
+				</div>
+				<p id="Myname"></p>
+				<ul>
+					<li class="care">
+						<a href="">我的喜欢</a>
+					</li>
+					
+					<li class="collect">
+						<a href="">我的收藏</a>
+					</li>
+				</ul>
+			</div>
+
+			<!--外部链接-->
+			<div class="select-content">
+				<ul>
+					 <li>
+						<a href="" class="personalSet">个人设置<span class="mui-icon mui-icon-arrowright jian"></span></a>						
+					</li>					
+					<li>
+						<a href="" class="aboutMe">关于我们<span class="mui-icon mui-icon-arrowright jian"></span></a>
+					</li>
+					<li>
+						<a href="" class="feedback">问题反馈<span class="mui-icon mui-icon-arrowright jian"></span></a>
+					</li>					
+				</ul>
+
+			</div>
+		</div>
+		<script src="../js/jquery-3.1.1.js"></script>
+		<script src="../js/ajax.js"></script>
+        <script type="text/javascript">
+            mui.init();
+      	    mui("body").on("tap",".personalSet",function(){
+      	    	  mui.openWindow({
+      	    	  	 id:"personalSet",
+      	    	  	 url:"personalSet.html",
+      	    	  })     	    	  
+      	    })    	    
+      	     mui(".select-content").on("tap",".aboutMe",function(){
+      	    	  mui.openWindow({
+      	    	  	 id:"aboutMe",
+      	    	  	 url:"aboutMe.html"
+      	    	  })     	    	  
+      	    })     	     
+      	     mui(".select-content").on("tap",".feedback",function(){
+      	    	  mui.openWindow({
+      	    	  	 id:"feedback",
+      	    	  	 url:"feedback.html"
+      	    	  })     	    	  
+      	    })
+      	    
+     //    	   喜欢
+      	    mui(".head-content").on("tap",".care",function(){
+      	    	  mui.openWindow({
+      	    	  	 id:"care",
+      	    	  	 url:"care.html"
+      	    	  })     	    	  
+      	    })     	    
+    //    	    收藏
+      	    mui(".head-content").on("tap",".collect",function(){
+      	    	  mui.openWindow({
+      	    	  	 id:"collect",
+      	    	  	 url:"collect.html"
+      	    	  })     	    	  
+      	    })     	    
+        	mui.plusReady(function(){
+        		var id=plus.storage.getItem('user_id');
+		  	    ajaxMain("/Home/Love/Personal_Center",{"love_user_id":id},
+		  	    function(datas){	    	  	
+			    	$("#Myname").html(datas.data.love_user_name);
+			    	$('.overall')[0].src=datas.data.love_user_img;
+		  	    })
+	  	    })
+    </script>
+    
+	</body>
+
+</html>

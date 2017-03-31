@@ -1,0 +1,214 @@
+   /*  全局样式类名*/ 
+   .overall {
+   	width: 100%;
+   	height: 100%;
+   }
+ .nickname form,
+  .star-feedback{ 
+  	padding-top: 50px;
+   }
+  .head-content .mui-bar a ,
+  .about-text,
+  .head-title,
+  .head-row p,
+  .head-row ul li a ,
+  .set-bar .mui-btn{   
+     color: #FFFFFF;
+   }     
+  .about-text span,
+  .head-row ul li ,
+  .head-row ul li a,
+  .select-content ul,
+  .select-content ul li a,
+  .textarea,
+  .star-feedback input{    
+  	   display: block;
+   }               
+   /*个人心主页面  */
+   .head-content {
+   	position: fixed;
+   	height: 5.1rem;
+   	background: #866eb1;
+   }
+   .head-title{
+   	font-size: 0.35rem;
+   }  
+   /*头部内容*/  
+   .head-row {
+   	width: 75%;
+   	margin: auto;
+   	padding-top: 40px;
+   } 
+   .personage-img {
+   	width: 1.6rem;
+   	height: 1.6rem;
+   	margin: auto;
+   	margin-top: 0.34rem;
+   }  
+   .personage-img img {
+   	border-radius: 50%;
+   } 
+   .head-row p {  
+   	text-align: center;
+   	margin-top: 0.4rem;
+   	margin-bottom: 0;
+   	height:0.52rem;
+   	font-size:0.35rem;
+   }
+   /*  喜欢  收藏*/ 
+   .head-row ul li {   	
+   	width: 50%;
+   	height: 0.5rem;
+   	float: left;
+   	padding-left: 0.6rem;
+   	margin-top: 0.3rem;  
+   }   
+   .head-row ul li:first-child {
+   	border-right: 1px solid #fff;
+   }   
+   .head-row ul li a {  	
+   	line-height: 0.5rem;
+   	font-size: 0.33rem;
+   	text-decoration: none;
+   }
+   /* 内容部分*/   
+   .select-content {
+   	height: 8.4rem;
+   	padding-bottom: 50px;
+   	background: #FFFFFF;
+   }   
+   .select-content ul { 	
+   	width: 90%;
+   	margin: auto;
+   }  
+   .select-content ul li {
+   	height: 1.3rem;
+   	border-bottom: 1px solid #dcdcdc;
+   }   
+   .select-content ul li:last-child {
+   	border-bottom: 0;
+   } 
+   .select-content ul li a {   
+   	text-decoration: none;
+   	color: #333333;
+   	height: 1.3rem;
+   	line-height: 1.3rem;
+   	font-size: 0.3rem;
+   }
+   .jian{
+   	float: right;
+   	display: block;
+   	color: #eee;
+   	height: 100%;
+   	line-height:1.3rem;
+   	font-size: 0.46rem !important;
+   }
+  				 /* 个人设置*/
+   /* 头部*/
+ .set-bar {
+   	background: #866eb1;
+   }   
+ .set-bar .mui-btn {
+   	background: transparent; 
+   	outline: none;
+   	border: 0;
+   }
+   .set-content {
+   	position: fixed;
+   	margin-top: 48px;
+   } 
+ .set-content li a {
+   	height: 1.2rem;
+   	line-height: 0.7rem;
+   	font-size: 0.35rem !important;
+   	color: #737373 !important;
+   } 
+  .set-row {
+   	width: 0.7rem;
+   	height: 0.7rem;
+   	text-align: right;  
+   	margin-right: 0.5rem;
+   } 
+   .set-row img {
+     	border: 2px solid #0e94dc;
+        border-radius: 50%;
+   }
+ 
+   /*模态框 */
+   .star-table li a {
+   	color: #737373 !important;
+   }
+   
+   
+   
+   /*修改昵称*/ 
+   .nickname div{
+   	 position: fixed;
+   	margin-top: 49px;
+   }    
+   .nickname div>input {
+   	border: 0;
+   	color: #737373;
+   }
+
+
+
+                                         
+   					/* 问题反馈*/
+  .textarea {  
+   	width: 80%;
+   	overflow: hidden;
+   	height: 3rem;
+   	margin: auto;
+   	font-size: 0.3rem;
+   	letter-spacing: 2px;
+   	color: #bdb1d3;
+   	margin-top: 20px;
+   	margin-bottom: 20px;
+   	border: 1px dashed #866eb1;
+   }  
+   .star-feedback input {
+   	
+   	width: 80%;
+   	border: 0;
+   	background: #866eb1;
+   	margin: auto;
+   }
+   /*关于我们*/ 
+   .about-text { 	
+   	margin-top: 0.35rem;
+   	text-align: center;
+   }  
+   
+   
+   .about-text span:last-child {
+   	width: 0.6rem;
+   	height: 0.08rem;
+   	margin: auto;
+   	margin-top: 0.1rem;
+   	border-bottom: 1px solid #FFFFFF;
+   	border-top: 1px solid #FFFFFF;
+   } 
+   .about-row p {
+   	margin: 0.2rem;
+   }
+  
+   .about-content {
+   	padding-top: 3.5rem;
+   	padding-bottom: 50px;
+   	background: url(../img/geren2.png) no-repeat;
+   	background-size: 100%;
+   	height: 9.9rem;
+   }   
+   .about-row2 {
+   	margin: auto;
+   	width: 75%;
+   	background: #FFFFFF;
+   	height: 5rem;
+   	font-size: 0.32rem;
+   	padding: 0.2rem 0.2rem;
+   	text-align: center;
+   	color: #6a6c6e;
+   	line-height: 0.5rem;
+   	border: 1px dashed #866eb1;
+   }
